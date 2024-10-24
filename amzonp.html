@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Product Search</title>
+</head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Image Example</title>
+    <style>
+        body {
+            background-image: url('img2.jpg');
+            background-size: cover; /* Makes the background cover the entire screen */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for Products on Amazon</h1>
+    <form id="searchForm" onsubmit="return searchAmazon();">
+        <input type="text" id="searchQuery" placeholder="Enter product name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <script>
+        function searchAmazon() {
+            const query = document.getElementById('searchQuery').value;
+            const amazonURL = `https://www.amazon.com/s?k=${encodeURIComponent(query)}`;
+            window.open(amazonURL, '_blank');
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
