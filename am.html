@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Product Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            background-image: url('imm01.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+        .search-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"], .clear-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #2874f0;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover, .clear-button:hover {
+            background-color: #0056b3;
+        }
+        .loading {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            const inputField = document.querySelector('input[name="q"]');
+            if (!inputField.value.trim()) {
+                event.preventDefault(); 
+                alert('Please enter a product name to search.');
+            } else {
+                document.querySelector('.loading').style.display = 'block';
+            }
+        }
+
+        function clearInput() {
+            const inputField = document.querySelector('input[name="q"]');
+            inputField.value = '';
+            document.querySelector('.loading').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+<ul class="dropdown-menu scrollable-dropdown" role="menu">
+        <li><a href="https://www.flipkart.com/search?q=laptop">laptop</a></li>
+        <li><a href="https://www.flipkart.com/search?q=watch">watch</a></li>
+        <li><a href="https://www.flipkart.com/search?q=flowerpots">flowerpots</a></li>
+        <li><a href="https://www.flipkart.com/search?q=mobile">mobile</a></li>
+      </ul>
+    <div class="search-container">
+        <h1>Search Products on Flipkart</h1>
+        <form action="https://www.flipkart.com/search" method="GET" onsubmit="validateForm(event)">
+            <input type="text" name="q" placeholder="Enter product name" required>
+            <input type="submit" value="Search">
+            <button type="button" class="clear-button" onclick="clearInput()">Clear</button>
+        </form>
+        <div class="loading">Loading...</div>
+    </div>
+</body>
+</html>
